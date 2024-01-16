@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website Under Maintanance</title>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; }
+      #message h3 { color: #888; font-weight: normal; font-size: 16px; margin: 16px 0 12px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Server Maintanance / Perbaikan Server</h2>
+      <h1>Sorry, Server is under maintanance</h1>
+      <h1>Maaf, Server sedang dalam perbaikan</h1>
+      <p>An FATAL Error Occured in the system. An DDoS Attack is currently happening in this time. we still finding ways to block request from going through</p>
+      <p>Sebuah Eror yang sangat FATAL Terjadi di dalam system. Serangan DDoS Sedang Terjadi di saat ini. Kami sedang berusaha mencari cara untuk menghalang request untuk masuk</p>
+      <p>~~Owner/Pemilik~~</p>
+      <a href="https://wa.me/+62881036992530">Need Help?</a>
+      <h2>Announcement / Pemberitahuan!</h2>
+      <p>The server will open on Tuesday, January 16, 2024 at the earliest at 3:15 AM and the latest at 6:35 PM.</p>
+      <p>Server akan di buka pada hari selasa 16 januari 2024 paling cepat pada jam 3.15 AM dan paling lambat pada jam 18.35 PM</p>
+
+    </div>
+  </body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, ref, set, get, child, onValue} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBOVZwAU8Di0PLAO7JLG-M2s1xsw4nQNI8",
+      authDomain: "chestsheetinfor.firebaseapp.com",
+      databaseURL: "https://chestsheetinfor-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "chestsheetinfor",
+      storageBucket: "chestsheetinfor.appspot.com",
+      messagingSenderId: "364389133511",
+      appId: "1:364389133511:web:40a6b83aba443dde4e22e2",
+      measurementId: "G-21XGV3CCKH"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    var countDownDate = new Date("Jan 16 2024 05:25:00").getTime();
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+          
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+          
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+        // Output the result in an element with id="demo"
+        document.getElementById("time").innerHTML = "Server will be open in: "+  days + "h " +  hours + "j "
+        + minutes + "m " + seconds + "d ";
+          
+        // If the count down is over, write some text 
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("time").innerHTML = "Turning On Website..... / Menyalakan Website......";
+          sleep(4000)
+          .then (() => {
+            set(ref(db), {
+                isShuttedDown: false
+                
+              
+              });
+              sleep(1000)
+              .then(() => {
+                location.replace("index.html")
+              })
+          })
+        }
+        const db = getDatabase();
+        const sys = ref(db, "isShuttedDown/");
+        onValue(sys, (snapshot) => {
+          const data_sys = snapshot.val();
+          if(data_sys == false){
+            location.replace("index.html")
+          } 
+        })
+        
+}, 1000);
+  </script>
+</html>

@@ -621,7 +621,9 @@ hr.hd1{
 .text-btn {
   margin: 0 1.5em
 }
-
+.login{
+  align-items: center;
+}
 </style>
 <body>
     <div class="login" id="form">
@@ -669,10 +671,13 @@ hr.hd1{
           <div class="text" id="status">Authenticaticating Users</div>
         </div>
         <div class="session"  id="name" style="display: none;">Welcome, Users!</div>
-        <div class="session"  id="role" >Role</div>
+        <div class="session"  id="role" style="display: none;">Role</div>
+        <div class="session"  id="Contract" style="display: none;">Contract Time: </div>
+        <div class="session"  id="time" style="display: none;">Eleng sesok ulangan infor.ndang di woco. Ulangan infor Dalam waktu : </div>
         <div class="session" id="session" style="display: none;">Your Session Is : </div>
+        <a href="" id="href"></a>
         
-<button class="button" id="donebtn">
+<button class="button" id="donebtn" style="display: none;">
 
 
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -687,7 +692,7 @@ Yes, Im In
 </button>
     </div>
   </div>
-    <div class="isi" id="isi">
+    <div class="isi" id="OIASHFUIAISF_aPJAIHIObhdAVUJADgfas">
       <div class="container">
         <h1>Kelas 7 </h1>
         <p>bab ini mencangkup materi</p>
@@ -701,11 +706,11 @@ Yes, Im In
         </button>
         <a href="index.php?" id="href"></a>
       </div>
-      <embed src="CheatSheet.pdf" id="dialog" type="application/pdf" width="1200" height="600" style="margin-top: -450px; margin-left: 300px; display: none;">
+      <embed src="https://yfrdd576a67dad5a7ti7686y87dug.web.app/cs.pdf" id="dialog" type="application/pdf" width="1200" height="600" style="margin-top: -450px; margin-left: 300px; display: none;">
         </div> 
         
     </div>
-    <div class="shop" id="shop" translate="no">
+    <div class="shop" id="PAioyuiuasf7AGDYUAufsaoifAIUF" translate="no">
       <div class="main">
         <h1 style="gap: 0rem; font-family: 'Electrolize', sans-serif; border-top: 10px; font-size: 75px; margin-left: 680px; margin-top: 20px;">MARKETPLACE</h1>
         <hr class="hd1"/>
@@ -771,7 +776,7 @@ Yes, Im In
               <hr class="card-divider">
               <div class="card-footer">
                   <div class="card-price"><span><s>$</span>49.99 </s></div><div class="nprice"><span>$</span>0.00</div>
-                  <button class="card-btn">
+                  <button class="card-btn" id="secret">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z"></path><path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m158.08 165.49a15 15 0 0 1 -14.23-10.26l-25.71-77.23h-47.44a15 15 0 1 1 0-30h58.3a15 15 0 0 1 14.23 10.26l29.13 87.49a15 15 0 0 1 -14.23 19.74z"></path></svg>
                   </button>
               </div>
@@ -851,7 +856,7 @@ Yes, Im In
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getDatabase, ref, set, get, child, onValue} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -883,23 +888,93 @@ Yes, Im In
     const analytics = getAnalytics(app);
     const auth = getAuth();
     const db = getDatabase();
+    const dbRef = ref(db);
+    
+    const system = ref(db, '/isShuttedDown');
+    onValue(system, (snapshot) => {
+      const data_sys = snapshot.val();
+      console.log(data_sys)
+      if(data_sys == true){
+        location.replace("Maintanance.html")
+      }else{
+        
+      }
+   })
+    const Ad08hsa2_2ou8_ = "isi";
     var loader = document.getElementById("auth");
     var form = document.getElementById("form");
     var status = document.getElementById("status");
-    var isi = document.getElementById("isi");
-    var shop = document.getElementById("shop");
+    const OIASHFUIAISF_aPJAIHIObhdAVUJADgfas = document.getElementById("OIASHFUIAISF_aPJAIHIObhdAVUJADgfas");
+    const PAioyuiuasf7AGDYUAufsaoifAIUF = document.getElementById("PAioyuiuasf7AGDYUAufsaoifAIUF");
     var dialog = document.getElementById("dialog");
-    isi.style.display = "none";
+    OIASHFUIAISF_aPJAIHIObhdAVUJADgfas.style.display = "none";
     loader.style.display = "none";
-    shop.style.display = "none";
+    PAioyuiuasf7AGDYUAufsaoifAIUF.style.display = "none";
     var submit = document.getElementById("submit");
     var btn1 = document.getElementById("btn1");
+    var timer = document.getElementById("time")
     var a = document.getElementById("href");
     var session = document.getElementById("session");
     var name_html = document.getElementById("name");
     var role_html = document.getElementById("role");
     var machineId = localStorage.getItem('MachineId');
+    var contract = document.getElementById("Contract");
+    var secret = document.getElementById("secret");
+    var translated = "";
+    var date = new Date().getDate()
+    var month = new Date().getMonth()
+    var year = new Date().getFullYear()
+    var d = date + "/" + month + "/" + year
+    console.log(d)
     var rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    function translateError(errorMsg){
+      switch(errorMsg){
+        case "auth/invalid-credential" || "auth/user-not-found":
+          translated = "Account Doesn't Exist"
+        case "auth/invalid-email":
+          translated = "Email Does Not Exist"
+        case "auth/invalid-password":
+          translated = "Password Incorrect"
+      }
+    }
+    // Set the date we're counting down to
+var countDownDate = new Date("Jan 18, 2024 08:10:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("time").innerHTML = "Eleng sesok ulangan infor. website akan di tutup dalam "+ hours + "j "
+  + minutes + "m " + seconds + "d ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("time").innerHTML = "HAYO SENG RONG SEMPAT SINAU";
+    sleep(4000)
+    .then (() => {
+      set(ref(db, 'System' + "/Shut_down" + date), {
+          reason: "Maintanance",
+          shutted_Down_by: "System",
+          isShuttedDown: true
+          
+        
+        });
+    })
+  }
+}, 1000);
     submit.addEventListener('click', () => {
         event.preventDefault()
 
@@ -922,6 +997,7 @@ Yes, Im In
     var user2 = userCredential;
     sleep(10000)
     .then(() => {
+        timer.style.display = "block";
         status.style.color = "rgb(21, 255, 0)";
         status.style.setProperty('--width', '16.5em')
         status.innerHTML = "Authentication Complete"
@@ -946,6 +1022,24 @@ Yes, Im In
             })
           }
         })
+        const contrac = ref(db, 'Users/' + uid + "/Contrac-Time");
+        onValue(admin, (snapshot) => {
+          const data_admin = snapshot.val();
+           if(data_admin == false){
+            contract.style.display = "none";
+          }else{
+            onValue(contrac, (snapshot) => {
+              const data_role = snapshot.val();
+              contract.style.display = "block";
+              contract.innerHTML = "Contract Time : " + data_role;
+            })
+          }
+        })
+        sleep(2500)
+        .then(() => {
+          donebtn.style.display = "block";
+        })
+
 
         session.innerHTML = "Your Session : " + rString; 
         session.style.display = "block";
@@ -969,18 +1063,18 @@ Yes, Im In
         status.style.color = "rgb(255, 0, 0)";
         status.style.setProperty('--width', '16.5em')
         status.innerHTML = "Authentication Failed"
-        session.innerHTML = "Your Session Is: " + rString;
-        sleep(4000)
+        name_html.innerHTML = "API'S Error: " + translated;
+        sleep(7000)
         .then(() => {
             loader.style.display = "none";
             form.style.display = "block";
         })
     })
-    aTMl3LkDSaAddaByhCVPG2iNwFFkwyZ2
     })
     
 
 btn1.addEventListener('click', () =>{
+  
   const us = getAuth().currentUser;
     const uid = us.uid;
     console.log(uid)
@@ -1004,9 +1098,21 @@ btn1.addEventListener('click', () =>{
 })
 const donebtn = document.getElementById("donebtn")
 donebtn.addEventListener('click', () =>{
+  var hre = document.getElementById("href")
+  const us = getAuth().currentUser;
+  const uid = us.uid;
+    console.log(uid)
+  const session_user = ref(db, 'Users/' + uid + "/user_session" + "/current_session");
+  onValue(session_user, (snapshot) => {
+          const sessionID = snapshot.val();
+          hre.href = "#session=" + sessionID
+  })
   loader.style.display = "none";
-            isi.style.display = "block";
-            shop.style.display = "block";
+            OIASHFUIAISF_aPJAIHIObhdAVUJADgfas.style.display = "block";
+            PAioyuiuasf7AGDYUAufsaoifAIUF.style.display = "block";
+})
+secret.addEventListener('click', () => {
+  location.replace("secret/index.html")
 })
   
 
